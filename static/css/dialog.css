@@ -1,0 +1,189 @@
+@keyframes dialog-bg{
+	0%   {opacity:0}
+	100% {opacity:1}
+}
+@keyframes dialog-open{
+	0%   {transform:scale(0.2,0.2); opacity:0;}
+	100% {transform:scale(1,1); opacity:1;}
+}
+@keyframes dialog-open-center{
+	0%   {transform:scale(0.2,0.2) translate(-100%,-100%); opacity:0;}
+	100% {transform:scale(1,1) translate(-50%,-50%); opacity:1;}
+}
+@keyframes dialog-next{
+	0%   {transform:scale(1,1) translate(100%,-50%); opacity:0;}
+	100% {transform:scale(1,1) translate(-50%,-50%); opacity:1;}
+}
+@keyframes dialog-prev{
+	0%   {transform:scale(1,1) translate(-200%,-50%); opacity:0;}
+	100% {transform:scale(1,1) translate(-50%,-50%); opacity:1;}
+}
+.dialog div, .dialog a{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+.dialog-bg{
+	background-color:rgba(0,0,0,0.7);
+	position:fixed;
+	display:block;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:998;
+	
+	animation-name: dialog-bg;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-out;
+	-webkit-animation-name: dialog-bg;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-timing-function: ease-out;
+}
+.dialog-load{
+	background:url(../images/dialog/load.gif) no-repeat center rgba(0,0,0,0.7);
+}
+.dialog-hidden{
+	display:none;
+}
+.dialog-open>.dialog{
+	animation-name: dialog-open;
+	animation-duration: 0.6s;
+	animation-timing-function: ease-out;
+	-webkit-animation-name: dialog-open;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-timing-function: ease-out;
+}
+.dialog-center>.dialog, .dialog-next>.dialog, .dialog-prev>.dialog{
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	animation-name: dialog-open-center;
+	animation-duration: 0.6s;
+	animation-timing-function: ease-out;
+	-webkit-animation-name: dialog-open-center;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-timing-function: ease-out;
+}
+.dialog-next>.dialog{
+	animation-name: dialog-next;
+	-webkit-animation-name: dialog-next;
+}
+.dialog-prev>.dialog{
+	animation-name: dialog-prev;
+	-webkit-animation-name: dialog-prev;
+}
+.dialog{
+	z-index:999;
+	box-shadow:2px 2px 8px 1px rgba(0,0,0,0.5);
+	border-radius:8px;
+	position:fixed;
+	bottom:auto;
+	right:auto;
+	padding:40px 8px 8px 8px;
+	background-color:rgba(255,255,255,1);
+}
+.dialog iframe{
+	border:1px solid #eeeeee;
+}
+.dialog>.dialog-close{
+	width:22px;
+	height:22px;
+	display:block;
+	position:absolute;
+	top:0;
+	left:auto;
+	transform:none;
+	bottom:auto;
+	right:0;
+	background-image:url(../images/dialog/close.svg);
+	background-repeat:no-repeat;
+	background-size:contain;
+	margin-right:8px;
+	margin-top:8px;
+	z-index:1;
+	cursor:pointer;
+}
+.dialog .dialog-prev, .dialog .dialog-next{
+	width:60px;
+	height:100%;
+	display:block;
+	position:absolute;
+	background:url(../images/dialog/prew.png) center no-repeat;
+	opacity:0;
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.dialog .dialog-next{
+	background:url(../images/dialog/next.png) center no-repeat;
+	right:0;
+	left:auto;
+}
+.dialog .dialog-next:hover, .dialog .dialog-prev:hover{
+	opacity:1;
+}
+.dialog>.dialog-close:hover, .dialog>.dialog-move:hover{
+	transform:scale(1.2,1.2);
+	-webkit-transform:scale(1.2,1.2);
+}
+.dialog>.dialog-move{
+	position:absolute;
+	display:block;
+	top:0;
+	left:auto;
+	transform:none;
+	bottom:auto;
+	right:0;
+	width:22px;
+	height:22px;
+	margin-right:40px;
+	margin-top:8px;
+	background-image:url(../images/dialog/move.svg);
+	background-size:contain;
+	background-repeat:no-repeat;
+	z-index:1;
+	cursor:move;
+}
+.dialog>.dialog-copy{
+	position:absolute;
+	display:inline-block;
+	top:auto;
+	left:auto;
+	transform:none;
+	bottom:0;
+	right:0;
+	margin-bottom:-14px;
+	margin-right:8px;
+	color:rgba(204,204,204,1);
+	font-size:10px;
+	font-family:Arial;
+	text-decoration:none;
+}
+.dialog>.dialog-copy:hover{
+	color:#999999;
+}
+.dialog>.dialog-title{
+	font-family:Arial;
+	color:rgba(102,102,102,1);
+	font-size:16px;
+	margin-top:-32px;
+	padding-bottom:8px;
+	position:relative;
+	padding-right:60px;
+	font-weight:bold;
+	text-decoration:none;
+	min-height:28px;
+}
+.dialog>.dialog-data{
+	height:100%;
+	width:100%;
+	position:relative;
+}
+.dialog>.dialog-caption{
+	font-family:Arial;
+	font-size:14px;
+	padding-top:2px;
+	padding-right:8px;
+	color:rgba(102,102,102,1);
+}

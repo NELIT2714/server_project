@@ -7,7 +7,7 @@
     <!--  Includes  -->
     <link rel="stylesheet" href="static/css/main.css">
 </head>
-<body>
+<body onload="gallery()">
     <div class="wrapper">
 <!--        <section class="pre-header">-->
 <!--            -->
@@ -94,25 +94,71 @@
                     </div>
                 </section>
             </section>
+            <section class="authors">
+                <div class="section-title">
+                    Autorzy projektu
+                </div>
+                <div class="authors-list">
+                    <div class="author">
+                        <div class="author-icon">
+                            <img src="static/images/terminal.svg" alt="">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">
+                                Oleh Olshanskyi (nelit.dev)
+                            </div>
+                            <div class="author-info">
+                                Programista projektu SERVER PROJECT. Odpowiedzialny za rozwój strony i obsługę techniczną
+                            </div>
+                        </div>
+                    </div>
+                    <div class="author">
+                        <div class="author-icon">
+                            <img src="static/images/windows.svg" alt="">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">
+                                author name
+                            </div>
+                            <div class="author-info-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="author">
+                        <div class="author-icon">
+                            <img src="static/images/coins.svg" alt="coins">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">
+                                author name
+                            </div>
+                            <div class="author-info">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="album">
                 <div class="section-title">
                     Zdjęcia
                 </div>
-                <div class="album-photos">
+                <div class="album-photos" id="gallery">
                     <div class="photo">
-                        <img src="static/images/img1.jpeg" alt="img1">
+                        <a class="img" href="static/images/img1.jpeg"><img src="static/images/img1.jpeg" alt="img1"></a>
                     </div>
                     <div class="photo">
-                        <img src="static/images/img2.jpeg" alt="img2">
+                        <a class="img" href="static/images/img2.jpeg"><img src="static/images/img2.jpeg" alt="img2"></a>
                     </div>
                     <div class="photo">
-                        <img src="static/images/img3.jpeg" alt="img3">
+                        <a class="img" href="static/images/img3.jpeg"><img src="static/images/img3.jpeg" alt="img3"></a>
                     </div>
                     <div class="photo">
-                        <img src="static/images/img4.jpeg" alt="img4">
+                        <a class="img" href="static/images/img4.jpeg"><img src="static/images/img4.jpeg" alt="img4"></a>
                     </div>
                     <div class="photo">
-                        <img src="static/images/img5.jpeg" alt="img5">
+                        <a class="img" href="static/images/img5.jpeg"><img src="static/images/img5.jpeg" alt="img5"></a>
                     </div>
                 </div>
             </section>
@@ -124,7 +170,7 @@
             </div>
         </footer>
     </div>
-
-    <script src="static/js/main.js"></script>
+    <script src="static/js/gallery.js"></script>
+    <script src="static/js/dialog.js"></script>
 </body>
 </html>
