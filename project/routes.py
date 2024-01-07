@@ -1,4 +1,5 @@
 import hashlib
+import json
 
 from flask import render_template, redirect, url_for, request, make_response
 from itsdangerous import URLSafeTimedSerializer
@@ -8,9 +9,12 @@ from project.models import Users
 
 @app.route("/")
 def index():
+    with open("config.json", "r") as file:
+        data = json.load(file)
+
     Base.metadata.create_all(bind=engine)
 
-    main_text = config["web"]["main-text"]
+    main_text = data["web"]["main-text"]
 
     signed_session = request.cookies.get("session")
     username = None
@@ -30,8 +34,12 @@ def index():
 
 @app.route("/admin/", methods=["POST", "GET"])
 def admin():
+    with open("config.json", "r") as file:
+        data = json.load(file)
+
     signed_session = request.cookies.get("session")
     username = None
+    main_text = data["web"]["main-text"]
 
     if signed_session:
         serializer = URLSafeTimedSerializer(app.secret_key)
@@ -51,7 +59,23 @@ def admin():
     if not user.group == "admin":
         return redirect(url_for("index"))
 
-    return render_template("admin.html", username=username)
+    return render_template("admin.html", username=username, main_text=main_text)
+
+
+@app.route("/admin/edit/main-text/", methods=["POST"])
+def edit_main_text():
+    if request.method == "POST":
+        with open("config.json", "r") as file:
+            data = json.load(file)
+
+        main_text = request.form.get("main-text")
+
+        data["web"]["main-text"] = main_text
+
+        with open("config.json", "w") as file:
+            json.dump(data, file, indent=4)
+
+    return redirect(url_for("admin"))
 
 
 @app.route("/sign-in/", methods=["POST", "GET"])

@@ -1,5 +1,15 @@
 {% extends "layout.html" %}
 
 {% block main_block %}
-
+    <section class="edit-main-text">
+        <form action="/admin/edit/main-text/" class="edit-main-text-form" method="POST">
+            <textarea name="main-text" id="main-text">{{ main_text }}</textarea><br>
+            <button type="submit">Zmienić tekst główny</button>
+        </form>
+    </section>
+    <section class="admin-features">
+        <div class="add-feature">
+            <form action="/admin/add/feature/" class="add-feature-form" method="POST"></form>
+        </div>
+    </section>
 {% endblock %}

@@ -21,3 +21,17 @@ class Users(Base):
         self.email = email
         self.password = password
         self.register_ip = register_ip
+
+
+class Feature(Base):
+    __tablename__ = "sp_features"
+
+    id = Column(BigInteger, primary_key=True)
+    name = Column(String(50), nullable=False)
+    description = Column(String(100), nullable=True)
+    icon = Column(Text, nullable=True)
+
+    def __init__(self, name, description, icon):
+        self.name = name
+        self.description = description
+        self.icon = icon

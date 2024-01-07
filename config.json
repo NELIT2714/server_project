@@ -1,18 +1,18 @@
 {
-  "web": {
-    "secret-key": "3dEn!zk.BMA-zFobcHeH2uonZBU6CfsN4k_aDhmDa8cfU6X4guVeJqEpBetwri@8Fei*MmMD!@ZHh!E6eaVrhXQMDnJH!9s.nV4chtWMtrLTPuTuq8ecRqzixNyZ@bcHLqWP6rfY8tMejLkUwZfs7Uu4p*sGDsQ3yRNvJGLBEmsuCz9Us!FRF6kVzcgizFq2KW-aE4VW",
-    "salt": "p.KQMwXjapNRvspchuVP.M@h.Yh.RWQE6UpwEM6vu_AMVCEKyyVXT_EB_@6B3YjpzHyr-Pc!6-_Q*7DxizKh9jdEDvzATmZDHn9YYADf.V9HyqrToLHJU9@t3xYFboR_wmQ24FCKc2r-UJncPBUgChKdNkYCromhsh2XQvjFBhv2GFUxuWvHfA.DWJKfa3EUxygvmwMv",
-    "super-admin": {
-      "username": "superadmin",
-      "password": "superadmin"
+    "web": {
+        "secret-key": "3dEn!zk.BMA-zFobcHeH2uonZBU6CfsN4k_aDhmDa8cfU6X4guVeJqEpBetwri@8Fei*MmMD!@ZHh!E6eaVrhXQMDnJH!9s.nV4chtWMtrLTPuTuq8ecRqzixNyZ@bcHLqWP6rfY8tMejLkUwZfs7Uu4p*sGDsQ3yRNvJGLBEmsuCz9Us!FRF6kVzcgizFq2KW-aE4VW",
+        "salt": "p.KQMwXjapNRvspchuVP.M@h.Yh.RWQE6UpwEM6vu_AMVCEKyyVXT_EB_@6B3YjpzHyr-Pc!6-_Q*7DxizKh9jdEDvzATmZDHn9YYADf.V9HyqrToLHJU9@t3xYFboR_wmQ24FCKc2r-UJncPBUgChKdNkYCromhsh2XQvjFBhv2GFUxuWvHfA.DWJKfa3EUxygvmwMv",
+        "super-admin": {
+            "username": "superadmin",
+            "password": "superadmin"
+        },
+        "main-text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias dolorem doloremque eius facilis magni, perferendis porro provident quasi quisquam, quos recusandae reiciendis repellat rerum temporibus unde vel! Natus, repellat?"
     },
-    "main-text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias dolorem doloremque eius facilis magni, perferendis porro provident quasi quisquam, quos recusandae reiciendis repellat rerum temporibus unde vel! Natus, repellat?"
-  },
-  "database": {
-    "hostname": "localhost",
-    "port": 3306,
-    "user": "root",
-    "password": "root",
-    "schema": "server_project"
-  }
+    "database": {
+        "hostname": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "root",
+        "schema": "server_project"
+    }
 }
