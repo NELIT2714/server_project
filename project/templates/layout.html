@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>SERVER PROJECT</title>
+
+    <!--  Includes  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body onload="gallery()">
+    <div class="wrapper">
+
+        <header>
+            <nav>
+                <div class="nav-logo">
+                    <a href="{{ url_for('index') }}">SERVER PROJECT</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#main-info">Informacja</a></li>
+                    <li><a href="#">Autorzy projektu</a></li>
+                    {% if username %}
+                        <li><a href="{{ url_for('logout') }}"><button type="button" class="login-btn">Wyloguj się</button></a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('sign_in') }}"><button type="button" class="login-btn">Zaloguj się</button></a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% block main_block %}
+
+            {% endblock %}
+        </main>
+
+        <footer>
+            <div class="footer-copyright">
+                <p>© <span class="current-year"></span> SERVER PROJECT | Website development by nelit.dev</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dialog.js') }}"></script>
+</body>
+</html>

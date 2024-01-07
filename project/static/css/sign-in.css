@@ -1,0 +1,93 @@
+.sign-in {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sign-in-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+    gap: 1rem;
+    align-items: center;
+}
+
+.sign-in-form > .section-title {
+    width: 100%;
+}
+
+.sign-in-form > .section-title p {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.sign-in-form > .section-title hr {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.sign-in-form {
+    width: 30rem;
+    background-color: white;
+    padding: 1rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.sign-in-form input {
+    border: none;
+    background-color: #F0F0F0;
+    padding: 8px 15px;
+    outline: none;
+    width: 100%;
+    border-radius: 20px;
+    font-family: system-ui, -apple-system;
+    transition: .3s all;
+}
+
+.sign-in-form input:focus {
+    background-color: #E0E0E0;
+}
+
+.sign-in-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sign-in-btns a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.form-controls {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-btns button, .login-btn{
+    background-color: #ffc800;
+    padding: 7px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s all;
+    border: none;
+    font-family: system-ui, -apple-system;
+    font-size: 12pt;
+}
+
+.sign-in-btns button:hover, .login-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.sign-in-btns a {
+    font-size: 10pt;
+}

@@ -1,4 +1,4 @@
-@import "fonts.css";
+@import "sign-in.css";
 
 * {
     margin: 0;
@@ -8,6 +8,8 @@
 
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: system-ui,-apple-system;
     background-color: #1b1b1b;
 }
@@ -27,6 +29,13 @@ a {
     color: black;
 }
 
+hr {
+    border: none;
+    height: 0.3px;
+    background-color: black;
+    border-radius: 100rem
+}
+
 /* Header */
 
 header {
@@ -40,7 +49,7 @@ nav {
     margin: 1rem 7rem;
 }
 
-.nav-logo {
+.nav-logo a {
     font-size: 18pt;
     color: white;
     cursor: pointer;
@@ -48,7 +57,7 @@ nav {
     transition: .3s all;
 }
 
-.nav-logo:hover {
+.nav-logo a:hover {
     color: #ffc800;
 }
 
@@ -56,6 +65,7 @@ nav {
 .nav-links {
     display: flex;
     gap: 5rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -71,6 +81,9 @@ nav {
 
 main {
     flex: 1 1 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-info {
@@ -211,6 +224,7 @@ main {
     color: white;
     font-weight: bold;
     font-size: 22pt;
+    text-align: center;
 }
 
 .feature-icon {

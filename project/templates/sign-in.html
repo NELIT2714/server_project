@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main_block %}
+	<section class="sign-in">
+        <div class="sign-in-container">
+            <form action="{{ url_for('sign_in') }}" class="sign-in-form" method="POST">
+                <div class="section-title">
+                    <p>Zaloguj się</p>
+                    <hr>
+                </div>
+                <div class="form-controls">
+                    <input type="text" name="username" id="username" placeholder="Nazwa użytkownika lub email"><br>
+                    <input type="password" name="password" id="password" placeholder="Hasło"><br>
+                    <div class="sign-in-btns">
+                        <a href="#">Zapomniałem hasło</a>
+                        <a href="{{ url_for('sign_up') }}">Utworz konto</a>
+                        <button type="submit">Zaloguj się</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

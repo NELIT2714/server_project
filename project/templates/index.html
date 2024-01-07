@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block main_block %}
+<section class="main-info" id="main-info">
+    <img src="{{ url_for('static', filename='images/servers.jpg') }}" alt="Serwery">
+    <div class="overlay"></div>
+
+    <div class="main-info-text">
+        <h1>SERVER PROJECT</h1>
+        <p>{{ main_text }}</p>
+    </div>
+</section>
+<section class="features">
+    <div class="section-title">
+        Czemu szkoła potrzebuje serwer?
+    </div>
+    <section class="feature-list">
+        <div class="feature">
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/lock.svg') }}" alt="Lock">
+                </div>
+                <div class="feature-name">
+                    Lorem ipsum dolor sit amet
+                </div>
+            </div>
+            <div class="feature-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/globe.svg') }}" alt="Globe">
+                </div>
+                <div class="feature-name">
+                    Lorem ipsum dolor sit amet
+                </div>
+            </div>
+            <div class="feature-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/users.svg') }}" alt="Users">
+                </div>
+                <div class="feature-name">
+                    Lorem ipsum dolor sit amet
+                </div>
+            </div>
+            <div class="feature-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/chart-histogram.svg') }}" alt="Chart-histogram">
+                </div>
+                <div class="feature-name">
+                    Lorem ipsum dolor sit amet
+                </div>
+            </div>
+            <div class="feature-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
+            </div>
+        </div>
+    </section>
+</section>
+<section class="authors">
+    <div class="section-title">
+        Autorzy projektu
+    </div>
+    <div class="authors-list">
+        <div class="author">
+            <div class="author-icon">
+                <img src="{{ url_for('static', filename='images/terminal.svg') }}" alt="">
+            </div>
+            <div class="author-info">
+                <div class="author-name">
+                    Oleh Olshanskyi (nelit.dev)
+                </div>
+                <div class="author-info">
+                    Programista projektu SERVER PROJECT. Odpowiedzialny za rozwój strony i obsługę techniczną
+                </div>
+            </div>
+        </div>
+        <div class="author">
+            <div class="author-icon">
+                <img src="{{ url_for('static', filename='images/windows.svg') }}" alt="">
+            </div>
+            <div class="author-info">
+                <div class="author-name">
+                    author name
+                </div>
+                <div class="author-info-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+            </div>
+        </div>
+        <div class="author">
+            <div class="author-icon">
+                <img src="{{ url_for('static', filename='images/coins.svg') }}" alt="coins">
+            </div>
+            <div class="author-info">
+                <div class="author-name">
+                    author name
+                </div>
+                <div class="author-info">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="album">
+    <div class="section-title">
+        Zdjęcia
+    </div>
+    <div class="album-photos" id="gallery">
+        <div class="photo">
+            <a class="img" href="{{ url_for('static', filename='images/img1.jpeg') }}"><img src="{{ url_for('static', filename='images/img1.jpeg') }}"></a>
+        </div>
+        <div class="photo">
+            <a class="img" href="{{ url_for('static', filename='images/img2.jpeg') }}"><img src="{{ url_for('static', filename='images/img2.jpeg') }}"></a>
+        </div>
+        <div class="photo">
+            <a class="img" href="{{ url_for('static', filename='images/img3.jpeg') }}"><img src="{{ url_for('static', filename='images/img3.jpeg') }}" alt="img3"></a>
+        </div>
+        <div class="photo">
+            <a class="img" href="{{ url_for('static', filename='images/img4.jpeg') }}"><img src="{{ url_for('static', filename='images/img4.jpeg') }}" alt="img4"></a>
+        </div>
+        <div class="photo">
+            <a class="img" href="{{ url_for('static', filename='images/img5.jpeg') }}"><img src="{{ url_for('static', filename='images/img5.jpeg') }}" alt="img5"></a>
+        </div>
+    </div>
+</section>
+{% endblock %}
