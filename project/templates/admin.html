@@ -1,15 +1,51 @@
 {% extends "layout.html" %}
 
 {% block main_block %}
-    <section class="edit-main-text">
-        <form action="/admin/edit/main-text/" class="edit-main-text-form" method="POST">
-            <textarea name="main-text" id="main-text">{{ main_text }}</textarea><br>
-            <button type="submit">Zmienić tekst główny</button>
-        </form>
-    </section>
-    <section class="admin-features">
-        <div class="add-feature">
-            <form action="/admin/add/feature/" class="add-feature-form" method="POST"></form>
-        </div>
+    <section class="admin-sections-wrapper">
+        <section class="admin-section">
+            <div class="section-title">
+                Main text
+            </div>
+            <div class="content">
+                <form action="/admin/edit/main-text/" class="edit-main-text-form" method="POST">
+                    <textarea name="main-text" id="main-text">{{ main_text }}</textarea><br>
+                    <button type="submit">Edit main text</button>
+                </form>
+            </div>
+        </section>
+        <section class="admin-section">
+            <div class="section-title">
+                Czemu szkoła potrzebuje serwer?
+            </div>
+            <div class="content">
+                <table class="admin-table" id="features-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Icon</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for feature in features %}
+                        <tr class="feature-tr" data-feature-id="{{ feature.id }}">
+                            <td class="feature-name">{{ feature.name }}</td>
+                            <td class="feature-description">{{ feature.description }}</td>
+                            <td class="td-icon"><img src="{{ url_for('static', filename='images/') }}{{ feature.icon }}" alt="{{ feature.icon }}"></td>
+                            <td class="edit-btn">
+                                <button class="edit-feature-btn">Edit</button>
+                                <button class="save-feature-btn" style="display: none;">Save</button>
+                            </td>
+                            <td class="delete-btn"><a href="#"><button>Delete</button></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <form action="/admin/add/feature/" class="add-feature-form" method="POST">
+                    <input type="text" name="feature-name" id="feature-name" placeholder="Title">
+                    <input type="text" name="feature-description" id="feature-description" placeholder="Description">
+                    <input type="file" name="feature-icon" id="feature-icon" placeholder="Icon">
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </section>
     </section>
 {% endblock %}

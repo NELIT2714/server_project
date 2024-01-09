@@ -6,7 +6,7 @@
             "username": "superadmin",
             "password": "superadmin"
         },
-        "main-text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias dolorem doloremque eius facilis magni, perferendis porro provident quasi quisquam, quos recusandae reiciendis repellat rerum temporibus unde vel! Natus, repellat?"
+        "main-text": "test\r\n"
     },
     "database": {
         "hostname": "localhost",

@@ -1,0 +1,107 @@
+.admin-sections-wrapper {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.admin-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.admin-section > .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.add-feature-form {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-feature-form input[type="file" i] {
+    color: white;
+}
+
+.admin-table {
+    border-collapse: collapse;
+    width: 50rem;
+}
+
+.admin-table td, .admin-table th {
+    border: 1px solid grey;
+    text-align: left;
+    padding: 8px;
+    background-color: white;
+    color: black;
+}
+
+.add-feature-form input {
+    width: 100%;
+    outline: none;
+    font-family: system-ui;
+    border-radius: 5px;
+    padding: 5px 5px;
+    border: none;
+}
+
+.edit-main-text-form {
+    width: 20rem;
+}
+
+.edit-main-text-form textarea {
+    width: 100%;
+    height: 5rem;
+    resize: none;
+    border-radius: 5px;
+    font-family: system-ui;
+    padding: 5px 5px;
+    outline: none;
+}
+
+.edit-main-text-form button,
+.add-feature-form button {
+    background-color: #ffc800;
+    padding: 7px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s all;
+    border: none;
+    font-family: system-ui, -apple-system;
+    font-size: 12pt;
+    width: 100%;
+}
+
+td > input {
+    padding: 1rem;
+    outline: none;
+    width: 100%;
+}
+
+.td-icon {
+    width: 5rem;
+}
+
+.td-icon > img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.edit-btn > a > button,
+.delete-btn > a > button {
+    width: 100%;
+}
+
+.edit-btn > form {
+    display: flex;
+}
+
+.edit-btn > form > button {
+    width: 100%;
+}

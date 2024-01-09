@@ -15,58 +15,60 @@
         Czemu szkoła potrzebuje serwer?
     </div>
     <section class="feature-list">
-        <div class="feature">
-            <div class="feature-header">
-                <div class="feature-icon">
-                    <img src="{{ url_for('static', filename='images/lock.svg') }}" alt="Lock">
+        {% for feature in features %}
+            <div class="feature">
+                <div class="feature-header">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='images/') }}{{ feature.icon }}" alt="{{ feature.icon }}">
+                    </div>
+                    <div class="feature-name">
+                        {{ feature.name }}
+                    </div>
                 </div>
-                <div class="feature-name">
-                    Lorem ipsum dolor sit amet
-                </div>
-            </div>
-            <div class="feature-content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
-            </div>
-        </div>
-        <div class="feature">
-            <div class="feature-header">
-                <div class="feature-icon">
-                    <img src="{{ url_for('static', filename='images/globe.svg') }}" alt="Globe">
-                </div>
-                <div class="feature-name">
-                    Lorem ipsum dolor sit amet
+                <div class="feature-content">
+                    {{ feature.description }}
                 </div>
             </div>
-            <div class="feature-content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
-            </div>
-        </div>
-        <div class="feature">
-            <div class="feature-header">
-                <div class="feature-icon">
-                    <img src="{{ url_for('static', filename='images/users.svg') }}" alt="Users">
-                </div>
-                <div class="feature-name">
-                    Lorem ipsum dolor sit amet
-                </div>
-            </div>
-            <div class="feature-content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
-            </div>
-        </div>
-        <div class="feature">
-            <div class="feature-header">
-                <div class="feature-icon">
-                    <img src="{{ url_for('static', filename='images/chart-histogram.svg') }}" alt="Chart-histogram">
-                </div>
-                <div class="feature-name">
-                    Lorem ipsum dolor sit amet
-                </div>
-            </div>
-            <div class="feature-content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos
-            </div>
-        </div>
+        {% endfor %}
+{#        <div class="feature">#}
+{#            <div class="feature-header">#}
+{#                <div class="feature-icon">#}
+{#                    <img src="{{ url_for('static', filename='images/globe.svg') }}" alt="Globe">#}
+{#                </div>#}
+{#                <div class="feature-name">#}
+{#                    Lorem ipsum dolor sit amet#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="feature-content">#}
+{#                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="feature">#}
+{#            <div class="feature-header">#}
+{#                <div class="feature-icon">#}
+{#                    <img src="{{ url_for('static', filename='images/users.svg') }}" alt="Users">#}
+{#                </div>#}
+{#                <div class="feature-name">#}
+{#                    Lorem ipsum dolor sit amet#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="feature-content">#}
+{#                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="feature">#}
+{#            <div class="feature-header">#}
+{#                <div class="feature-icon">#}
+{#                    <img src="{{ url_for('static', filename='images/chart-histogram.svg') }}" alt="Chart-histogram">#}
+{#                </div>#}
+{#                <div class="feature-name">#}
+{#                    Lorem ipsum dolor sit amet#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="feature-content">#}
+{#                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid animi consequuntur debitis ducimus eaque eos#}
+{#            </div>#}
+{#        </div>#}
     </section>
 </section>
 <section class="authors">

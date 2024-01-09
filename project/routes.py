@@ -1,22 +1,14 @@
 import hashlib
 import json
 
-from flask import render_template, redirect, url_for, request, make_response
+from flask import render_template, redirect, url_for, request, make_response, jsonify
 from itsdangerous import URLSafeTimedSerializer
 from project import app, Session, Base, engine, config
-from project.models import Users
+from project.models import Users, Feature
 
 
-@app.route("/")
-def index():
-    with open("config.json", "r") as file:
-        data = json.load(file)
-
-    Base.metadata.create_all(bind=engine)
-
-    main_text = data["web"]["main-text"]
-
-    signed_session = request.cookies.get("session")
+def check_session(session_name):
+    signed_session = request.cookies.get(session_name)
     username = None
 
     if signed_session:
@@ -25,11 +17,39 @@ def index():
         try:
             session_data = serializer.loads(signed_session)
             username = session_data.get("username")
-        except Exception as e:
-            print(e)
-            return 'Invalid session'
+            return username
+        except Exception:
+            return False
 
-    return render_template("index.html", username=username, main_text=main_text)
+    return username
+
+
+@app.route("/")
+def index():
+    with open("config.json", "r") as file:
+        data = json.load(file)
+
+    Base.metadata.create_all(bind=engine)
+    main_text = data["web"]["main-text"]
+    username = check_session("session")
+
+    if username:
+        with Session() as session:
+            user_admin = session.query(Users).filter_by(username=username).first()
+
+            if not user_admin.group == "admin":
+                user_admin = None
+    else:
+        user_admin = None
+
+    with Session() as session:
+        features = session.query(Feature).all()
+
+    return render_template(template_name_or_list="index.html",
+                           username=username,
+                           main_text=main_text,
+                           user_admin=user_admin,
+                           features=features)
 
 
 @app.route("/admin/", methods=["POST", "GET"])
@@ -38,7 +58,6 @@ def admin():
         data = json.load(file)
 
     signed_session = request.cookies.get("session")
-    username = None
     main_text = data["web"]["main-text"]
 
     if signed_session:
@@ -59,7 +78,37 @@ def admin():
     if not user.group == "admin":
         return redirect(url_for("index"))
 
-    return render_template("admin.html", username=username, main_text=main_text)
+    with Session() as session:
+        features = session.query(Feature).all()
+
+    return render_template(template_name_or_list="admin.html",
+                           username=username,
+                           main_text=main_text,
+                           features=features)
+
+
+@app.route("/admin/add/feature/", methods=["POST"])
+def add_feature():
+    if request.method == "POST":
+        feature_name = request.form.get("feature-name")
+        feature_description = request.form.get("feature-description")
+        feature_icon = request.form.get("feature-icon")
+
+        with Session() as session:
+            try:
+                feature_object = Feature(
+                    name=feature_name,
+                    description=feature_description,
+                    icon=feature_icon
+                )
+                session.add(feature_object)
+                session.commit()
+            except Exception as error:
+                print(error)
+                session.rollback()
+                return redirect(url_for("admin"))
+
+    return redirect(url_for("admin"))
 
 
 @app.route("/admin/edit/main-text/", methods=["POST"])
@@ -193,6 +242,56 @@ def sign_up():
             return redirect(url_for("index"))
 
         return render_template("sign-up.html")
+
+
+@app.route("/admin/get_feature_data/<int:feature_id>/", methods=["POST"])
+def get_feature_info(feature_id):
+    if request.method == "POST":
+        with Session() as session:
+            feature = session.query(Feature).filter_by(id=feature_id).first()
+
+        if feature:
+            return jsonify({
+                "id": feature.id,
+                "name": feature.name,
+                "description": feature.description,
+            })
+        else:
+            return jsonify({"error": "Feature not found"}), 404
+
+
+@app.route("/admin/update_feature/<int:feature_id>/", methods=["POST"])
+def update_feature(feature_id):
+    if request.method == "POST":
+        with Session() as session:
+            feature = session.query(Feature).filter_by(id=feature_id).first()
+
+            if feature:
+                new_name = request.form.get("name")
+                new_description = request.form.get("description")
+
+                feature.name = new_name
+                feature.description = new_description
+                session.commit()
+                return jsonify({"message": "Update successfully"})
+            else:
+                return jsonify({"error": "Feature not found"}), 404
+
+
+@app.route("/admin/delete/feature/<int:feature_id>", methods=["POST"])
+def delete_feature(feature_id):
+    if request.method == "POST":
+        with Session() as session:
+            feature = session.query(Feature).filter_by(id=feature_id).first()
+
+            if feature:
+                try:
+                    session.delete(feature)
+                    session.commit()
+                    return jsonify({"message": "Feature deleted successfull"})
+                except Exception as error:
+                    print(error)
+                    return jsonify({"message": "Delete error"})
 
 
 @app.route("/logout/")
