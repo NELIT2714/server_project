@@ -158,23 +158,18 @@ def sign_in():
         else:
             return "Niepoprawne hasło, email lub nazwa użytkownika"
     else:
-        signed_session = request.cookies.get("session")
-        username = None
-
-        if signed_session:
-            serializer = URLSafeTimedSerializer(app.secret_key)
-
-            try:
-                session_data = serializer.loads(signed_session)
-                username = session_data.get("username")
-            except Exception as e:
-                print(e)
-                return 'Invalid session'
+        username = check_session("session")
 
         if username:
-            return redirect(url_for("index"))
+            with Session() as session:
+                user_admin = session.query(Users).filter_by(username=username).first()
 
-        return render_template("sign-in.html")
+                if not user_admin.group == "admin":
+                    user_admin = None
+        else:
+            user_admin = None
+
+        return render_template("sign-in.html", user_admin=user_admin)
 
 
 @app.route("/sign-up/", methods=["POST", "GET"])
@@ -225,21 +220,15 @@ def sign_up():
 
         return response
     else:
-        signed_session = request.cookies.get("session")
-        username = None
-
-        if signed_session:
-            serializer = URLSafeTimedSerializer(app.secret_key)
-
-            try:
-                session_data = serializer.loads(signed_session)
-                username = session_data.get("username")
-            except Exception as e:
-                print(e)
-                return 'Invalid session'
-
+        username = check_session("session")
         if username:
-            return redirect(url_for("index"))
+            with Session() as session:
+                user_admin = session.query(Users).filter_by(username=username).first()
+
+                if not user_admin.group == "admin":
+                    user_admin = None
+        else:
+            user_admin = None
 
         return render_template("sign-up.html")
 
@@ -288,7 +277,7 @@ def delete_feature(feature_id):
                 try:
                     session.delete(feature)
                     session.commit()
-                    return jsonify({"message": "Feature deleted successfull"})
+                    return jsonify({"message": "Feature deleted successfully"})
                 except Exception as error:
                     print(error)
                     return jsonify({"message": "Delete error"})
